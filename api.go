@@ -20,25 +20,25 @@ import (
 
 // main variables
 var (
-	user_hwid         string                                      // users HWID to be checked/registered etc
-	user_ID           string                                      // user ID to be associated with the user_hwid In the database
-	api_key           string                                      // Authcord APIKEY
-	admin_key         string                                      // Authcord admin APIKEY
-	database_password string = "" // database password
-	channel_id        string = ""              // channel for commands to be sent to
-	app_hash          string                                      // string that contains the APP HASH / APP ID
-	apphashexists     bool                                        // boolean for checking if apphash exists
-	success           bool   = false                              // boolean for checking if certian values are a success or not
-	valid             bool   = false                              // boolean for checking if an HWID is valid or not / was called "check"
-	apikeyexist       bool   = false                              // boolean for checking if an APIKEY exists or not
-	adminapikeyexist  bool   = false                              // boolean for checking if an admin level APIKEY exists or not
+	user_hwid         string         // users HWID to be checked/registered etc
+	user_ID           string         // user ID to be associated with the user_hwid In the database
+	api_key           string         // Authcord APIKEY
+	admin_key         string         // Authcord admin APIKEY
+	database_password string = ""    // database password
+	channel_id        string = ""    // channel for commands to be sent to
+	app_hash          string         // string that contains the APP HASH / APP ID
+	apphashexists     bool           // boolean for checking if apphash exists
+	success           bool   = false // boolean for checking if certian values are a success or not
+	valid             bool   = false // boolean for checking if an HWID is valid or not / was called "check"
+	apikeyexist       bool   = false // boolean for checking if an APIKEY exists or not
+	adminapikeyexist  bool   = false // boolean for checking if an admin level APIKEY exists or not
 )
 
-// Discord Tokensz
+// Discord Tokens
 var (
 	tokens = []string{
-		".Gh6SFV.-", // token for client one
-		".G68hSp.", // token for client two
+		"", // token for client one
+		"", // token for client two
 	}
 )
 
@@ -227,7 +227,7 @@ func generate_random_key() string {
 	rand.Seed(time.Now().UTC().UnixNano())
 
 	key_length := 10 // will generate a key 10 chars long
-	chars := []rune("")
+	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
 
 	randomString := make([]rune, key_length)
 
@@ -708,6 +708,11 @@ func newapphash(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// admin function for creating APIKEYS
+func addnewkey(w http.ResponseWriter, r *http.Request) {
+
+}
+
 // Rate limit function
 func rateLimitMiddleware(limiter *rate.Limiter) mux.MiddlewareFunc {
 	return func(next http.Handler) http.Handler {
@@ -737,5 +742,6 @@ func main() {
 	router.HandleFunc("/api/v1/listhwids", listHWIDS)
 	router.HandleFunc("/api/v1/newapphash", newapphash)
 
+	router.HandleFunc("/admin/v1/newkey", addnewkey)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
