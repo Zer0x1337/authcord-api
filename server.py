@@ -9,7 +9,7 @@ class AuthBot(discord.Client):
         self.db = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='8d0a4b24eccf55cedc494b612732678a',
+            password='',
             database='authcord',
             auth_plugin='mysql_native_password'
         )
