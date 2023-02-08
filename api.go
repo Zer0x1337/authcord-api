@@ -24,8 +24,8 @@ var (
 	user_ID           string                                      // user ID to be associated with the user_hwid In the database
 	api_key           string                                      // Authcord APIKEY
 	admin_key         string                                      // Authcord admin APIKEY
-	database_password string = "8d0a4b24eccf55cedc494b612732678a" // database password
-	channel_id        string = "1059649223961878619"              // channel for commands to be sent to
+	database_password string = "" // database password
+	channel_id        string = ""              // channel for commands to be sent to
 	app_hash          string                                      // string that contains the APP HASH / APP ID
 	apphashexists     bool                                        // boolean for checking if apphash exists
 	success           bool   = false                              // boolean for checking if certian values are a success or not
@@ -37,8 +37,8 @@ var (
 // Discord Tokensz
 var (
 	tokens = []string{
-		"MTA1OTY4NjMyMDAzOTAxODUxNg.Gh6SFV.4blJz5EIsxCA8-uI6AfjTYaNk9OEt_gpqKC5Pk", // token for client one
-		"MTA2OTY0OTcxNzQwNDkwMTM3Ng.G68hSp.EmNuMr6B3gJjRPp8Um9Bui0tLIZBxO7U6YBoYI", // token for client two
+		".Gh6SFV.-", // token for client one
+		".G68hSp.", // token for client two
 	}
 )
 
@@ -227,7 +227,7 @@ func generate_random_key() string {
 	rand.Seed(time.Now().UTC().UnixNano())
 
 	key_length := 10 // will generate a key 10 chars long
-	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
+	chars := []rune("")
 
 	randomString := make([]rune, key_length)
 
