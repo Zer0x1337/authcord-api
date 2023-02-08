@@ -75,4 +75,4 @@ class AuthBot(discord.Client):
             cursor.close()
 
 auth_bot = AuthBot(intents)
-auth_bot.run('MTA1OTY0OTk4MjI4NzgzOTMxMw.GsvJcC.A7sUIBKk0DruMfVgCktyPn0lfIL4rkP1A47Ugk')
+auth_bot.run('.')
