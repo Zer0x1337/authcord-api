@@ -1,2 +1,2 @@
-# authcord-api
-Up to date authcord api
+# Authcord API
+This project was fun but at the end of the day its nothing unique...
